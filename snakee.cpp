@@ -56,7 +56,7 @@ void luuDiemCao(int x)
 	FILE *fp;
 
 	fp = fopen("./highscore.txt", "w");
-	char highscore[1000];
+	char highscore[100000];
 	sprintf(highscore, "%d", x);
 	fprintf(fp, highscore);
 	fclose(fp);
@@ -194,20 +194,14 @@ void intro()
 {
 	system("cls");
 	int i = 1;
-	int x = 45, y = 12;
+	int x = 30, y = 10;
+	int k = 70, l = 10;
 	while (true)
 	{
 		system("cls");
-		gotoxy(x, y);
-		/*CONSOLE_FONT_INFOEX cfi;
-		cfi.cbSize = sizeof(cfi);
-		cfi.nFont = 0;
-		cfi.dwFontSize.X = 0;  // Width of each character in the font
-		cfi.dwFontSize.Y = 24; // Height
-		cfi.FontFamily = FF_DONTCARE;
-		cfi.FontWeight = FW_NORMAL;
-		std::wcscpy(cfi.FaceName, L"Consolas"); // Choose your font
-		SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi); */
+		gotoxy(x, y);		
+		printf("RAN SAN MOI");
+		gotoxy(k, l);		
 		printf("RAN SAN MOI");
 		setColor(i);
 		i++;
@@ -215,16 +209,16 @@ void intro()
 		{
 			i = 1;
 		}
-		Sleep(200);
-		if (x == 57)
-		{
-			system("cls");
+		Sleep(205);
+		if (x == 50 && k == 50)
+		{ 		    
+		    system("cls");
 			state = SANH_CHINH;
 			break;
 		}
 		x++;
-	}
-	
+		k--;
+	}		
 }
 
 void loadCoDien()
@@ -545,7 +539,7 @@ void trangTriSanhChinh()
 void sanhChinh()
 {
 	// mo nhac thong qua duong` dan~ toi file chua nhac
-	//system("start /min powershell -c (New-Object Media.SoundPlayer 'C:\\Users\\tminh\\OneDrive\\Documents\\snakee\\retrofunk.wav').PlaySync();");//
+	system("start /min powershell -c (New-Object Media.SoundPlayer 'C:\\Users\\tminh\\OneDrive\\Documents\\snakee\\retrofunk.wav').PlaySync();");//
 	system("cls");
 	trangTriSanhChinh();
 	gotoxy(53, 16);
@@ -953,9 +947,25 @@ void taoChuongNgaiVat()
 	}
 }
 
+void taoChuongNgaiVatTrongThachThuc()
+{
+	gotoxy(20, 5);
+	int i = 20;
+	for(i; i < 60; i++){
+		printf("+");
+	}
+
+	gotoxy(20, 20);
+	int j = 20;
+	for(j; j < 60; j++){
+		printf("+");
+	}
+
+}
+
 int getX(int a)
 {
-	return (a - 10000) / 100;
+	return (a - 10000) / 100; //5 so de~ lay ra toa do x hon
 }
 
 int getY(int a)
@@ -1218,6 +1228,7 @@ void thachThuc()
 	khoiNguyenChetChoc();
 	veKhung();
 	inChiSoSucManhThachThuc();
+	taoChuongNgaiVatTrongThachThuc();
 	setColor(13);
 	gotoxy(getX(traiAcQuy), getY(traiAcQuy));
 	printf("O");
@@ -1321,6 +1332,29 @@ void thachThuc()
 				system("cls");
 				state = KET_THUC_KHOC_LIET;
 			}
+			// Tuong trong
+
+			if ((hoanhToc > 0) && (getX(ran[0]) == 20) && ((getY(ran[0]) == 5) || (getY(ran[0]) == 20)))
+			{
+				system("cls");
+				state = KET_THUC_KHOC_LIET;
+			}
+			if ((hoanhToc < 0) && (getX(ran[0]) == 59) && ((getY(ran[0]) == 5) || (getY(ran[0]) == 20)))
+			{
+				system("cls");
+				state = KET_THUC_KHOC_LIET;
+			}
+			
+			if ((tungToc > 0) && ((getY(ran[0]) == 20) || (getY(ran[0]) == 5)) && (getX(ran[0]) != 1) && (getX(ran[0]) != 2) && (getX(ran[0]) != 3) && (getX(ran[0]) != 4) && (getX(ran[0]) != 5) && (getX(ran[0]) != 6) && (getX(ran[0]) != 7) && (getX(ran[0]) != 8) && (getX(ran[0]) != 9) && (getX(ran[0]) != 10) && (getX(ran[0]) != 11) && (getX(ran[0]) != 12) && (getX(ran[0]) != 13) && (getX(ran[0]) != 14) && (getX(ran[0]) != 15) && (getX(ran[0]) != 16) && (getX(ran[0]) != 17) && (getX(ran[0]) != 18) && (getX(ran[0]) != 19) && (getX(ran[0]) != 60) && (getX(ran[0]) != 61) && (getX(ran[0]) != 62) && (getX(ran[0]) != 63) && (getX(ran[0]) != 64) && (getX(ran[0]) != 65) && (getX(ran[0]) != 66) && (getX(ran[0]) != 67) && (getX(ran[0]) != 68) && (getX(ran[0]) != 69) && (getX(ran[0]) != 70) && (getX(ran[0]) != 71) && (getX(ran[0]) != 72) && (getX(ran[0]) != 73) && (getX(ran[0]) != 74) && (getX(ran[0]) != 75) && (getX(ran[0]) != 76) && (getX(ran[0]) != 77) && (getX(ran[0]) != 78))
+			{		       
+				   system("cls");
+				   state = KET_THUC_KHOC_LIET;			
+			}
+			if ((tungToc < 0) && ((getY(ran[0]) == 5) || (getY(ran[0]) == 20)) && (getX(ran[0]) != 1) && (getX(ran[0]) != 2) && (getX(ran[0]) != 3) && (getX(ran[0]) != 4) && (getX(ran[0]) != 5) && (getX(ran[0]) != 6) && (getX(ran[0]) != 7) && (getX(ran[0]) != 8) && (getX(ran[0]) != 9) && (getX(ran[0]) != 10) && (getX(ran[0]) != 11) && (getX(ran[0]) != 12) && (getX(ran[0]) != 13) && (getX(ran[0]) != 14) && (getX(ran[0]) != 15) && (getX(ran[0]) != 16) && (getX(ran[0]) != 17) && (getX(ran[0]) != 18) && (getX(ran[0]) != 19) && (getX(ran[0]) != 60) && (getX(ran[0]) != 61) && (getX(ran[0]) != 62) && (getX(ran[0]) != 63) && (getX(ran[0]) != 64) && (getX(ran[0]) != 65) && (getX(ran[0]) != 66) && (getX(ran[0]) != 67) && (getX(ran[0]) != 68) && (getX(ran[0]) != 69) && (getX(ran[0]) != 70) && (getX(ran[0]) != 71) && (getX(ran[0]) != 72) && (getX(ran[0]) != 73) && (getX(ran[0]) != 74) && (getX(ran[0]) != 75) && (getX(ran[0]) != 76) && (getX(ran[0]) != 77) && (getX(ran[0]) != 78))
+			{				
+				   system("cls");
+				   state = KET_THUC_KHOC_LIET;				
+			} 
 			setColor(12);
 			gotoxy(getX(ran[0]), getY(ran[0]));
 			printf("#");
