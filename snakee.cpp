@@ -44,7 +44,7 @@ int layDiemCao()
 	fp = fopen("./highscore.txt", "r");
 	int score;
 
-	if (fscanf(fp, "%d", &score) == -1)
+	if (fscanf(fp, "%d", &score) <1)
 		return 0;
 
 	fclose(fp);
@@ -69,7 +69,7 @@ int layDiemCaoThachThuc()
 	fp = fopen("./highscorehard.txt", "r");
 	int score1;
 
-	if (fscanf(fp, "%d", &score1) == -1)
+	if (fscanf(fp, "%d", &score1) <1)
 		return 0;
 
 	fclose(fp);
